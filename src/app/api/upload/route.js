@@ -35,9 +35,10 @@ export async function POST(request) {
             return NextResponse.json({ error: "Invalid files" }, { status: 400 });
         }
 
-        // Prepare file data for MongoDB (store as base64 or Buffer)
+        // Prepare file data for MongoDB
         const questionFile = questionFiles[0];
         const questionBuffer = Buffer.from(await questionFile.arrayBuffer());
+        
         const answers = [];
         for (const file of answerFiles) {
             const buffer = Buffer.from(await file.arrayBuffer());
@@ -45,7 +46,8 @@ export async function POST(request) {
                 name: file.name,
                 type: file.type,
                 size: file.size,
-                data: buffer,
+                // Store as base64 string to avoid BSON Binary issues
+                data: buffer.toString('base64'),
             });
         }
 
@@ -58,7 +60,8 @@ export async function POST(request) {
                 name: questionFile.name,
                 type: questionFile.type,
                 size: questionFile.size,
-                data: questionBuffer,
+                // Store as base64 string to avoid BSON Binary issues
+                data: questionBuffer.toString('base64'),
             },
             answers,
             uploadedAt: new Date(),
@@ -66,6 +69,10 @@ export async function POST(request) {
 
         return NextResponse.json({ success: true, id: result.insertedId });
     } catch (e) {
-        return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+        console.error('Upload API Error:', e);
+        return NextResponse.json({ 
+            error: "Upload failed", 
+            details: e.message 
+        }, { status: 500 });
     }
 }
