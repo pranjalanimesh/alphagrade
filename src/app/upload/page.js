@@ -15,33 +15,22 @@ export default function UploadPage() {
         setUploading(true);
         try {
             const form = new FormData();
-            questionFiles.forEach((file) =>
-                form.append("questionFiles[]", file)
-            );
-            answerFiles.forEach((file) => form.append("answerFiles[]", file));
+            questionFiles.forEach((file) => form.append("questionFiles", file));
+            answerFiles.forEach((file) => form.append("answerFiles", file));
 
             await fetch("/api/upload", { method: "POST", body: form });
 
             setQuestionFiles([]);
             setAnswerFiles([]);
-            router.push("/evaluate");
         } catch (e) {
             alert("Upload failed.");
         }
+        // router.push("/evaluate");
         setUploading(false);
     };
 
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                minHeight: "100vh",
-                gap: "2rem",
-                justifyContent: "center",
-            }}
-        >
+        <div className="flex flex-col items-center min-h-screen gap-8 justify-center">
             <UploadCard
                 files={questionFiles}
                 setFiles={setQuestionFiles}

@@ -58,7 +58,7 @@ export default function UploadCard({ files, setFiles, label, description, multip
         >
           <FileIcon className="h-8 w-8 mb-2 text-gray-400" />
           <div className="text-gray-600 text-center">
-            Drag and drop PDF files here, or <span className="underline">click to select</span>
+            Drag and drop PDF file{multiple ? "s" : ""} here, or <span className="underline">click to select</span>
           </div>
           <input
             ref={inputRef}
