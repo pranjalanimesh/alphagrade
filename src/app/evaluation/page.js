@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import NavBar from '../../components/NavBar';
 
 function formatSize(bytes) {
     if (bytes < 1024) return `${bytes} B`;
@@ -73,6 +74,8 @@ const EvaluationPage = () => {
     }
 
     return (
+        <>
+        <NavBar/>
         <div className="max-w-4xl mx-auto py-8">
             <h1 className="text-2xl font-bold mb-4">Evaluation</h1>
             
@@ -126,6 +129,8 @@ const EvaluationPage = () => {
                 </div>
             </div>
         </div>
+        </>
+
     );
 };
 
