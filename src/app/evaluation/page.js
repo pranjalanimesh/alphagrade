@@ -130,7 +130,6 @@ const EvaluationPage = () => {
             </div>
         </div>
         </>
-
     );
 };
 

@@ -23,10 +23,10 @@ export default function UploadPage() {
 
             setQuestionFiles([]);
             setAnswerFiles([]);
+            router.push("/evaluation");
         } catch (e) {
             alert("Upload failed.");
         }
-        // router.push("/evaluate");
         setUploading(false);
     };
 
