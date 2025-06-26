@@ -19,7 +19,7 @@ export default function Home() {
                             <span className="animate-fade-in-up inline-block opacity-0" style={{animationDelay: '2.2s', animationFillMode: 'forwards'}}>for Modern Teachers</span>
                         </h1>
 
-                        <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto animate-fade-in-up opacity-0 animate-typewriter" 
+                        <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto animate-fade-in-up opacity-0" 
                            style={{animationDelay: '2.8s', animationFillMode: 'forwards'}}>
                             Transform how you assess student understanding with
                             intelligent, adaptive math evaluations that save
