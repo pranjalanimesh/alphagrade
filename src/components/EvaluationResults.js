@@ -51,7 +51,7 @@ const EvaluationResults = ({ evaluationData }) => {
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg flex items-center gap-2">
               <FileText className="h-5 w-5" />
-              Question {question.question_number?.question_number?.[0] || 'N/A'}
+              Question {question.question_number?.question_number?.[0] || 'N/A'} {question.question_number?.question_number?.[1] || ''} {question.question_number?.question_number?.[2] || ''}
               <Badge variant="outline">Page {pageNum}</Badge>
             </CardTitle>
             <div className="flex items-center gap-2">
